@@ -14,7 +14,6 @@
 
 package com.google.devtools.common.options;
 
-import com.google.devtools.common.options.Converters.BooleanConverter;
 
 /**
  * Converter that can also convert from booleans and enumerations.
@@ -23,7 +22,8 @@ import com.google.devtools.common.options.Converters.BooleanConverter;
  * boolean string values. If there is an overlap in values, those from
  * the underlying enumeration will be taken.
  */
-public abstract class BoolOrEnumConverter<T extends Enum<T>> extends EnumConverter<T>{
+public abstract class BoolOrEnumConverter<T extends Enum<T>> extends
+    com.google.devtools.common.options.EnumConverter<T> {
   private T falseValue;
   private T trueValue;
 
@@ -46,15 +46,15 @@ public abstract class BoolOrEnumConverter<T extends Enum<T>> extends EnumConvert
   }
 
   @Override
-  public T convert(String input) throws OptionsParsingException {
+  public T convert(String input) throws com.google.devtools.common.options.OptionsParsingException {
     try {
       return super.convert(input);
-    } catch (OptionsParsingException eEnum) {
+    } catch (com.google.devtools.common.options.OptionsParsingException eEnum) {
       try {
-        BooleanConverter booleanConverter = new BooleanConverter();
+        com.google.devtools.common.options.Converters.BooleanConverter booleanConverter = new com.google.devtools.common.options.Converters.BooleanConverter();
         boolean value = booleanConverter.convert(input);
         return value ? trueValue : falseValue;
-      } catch (OptionsParsingException eBoolean) {
+      } catch (com.google.devtools.common.options.OptionsParsingException eBoolean) {
         throw eEnum;
       }
     }

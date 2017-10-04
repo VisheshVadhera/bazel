@@ -346,6 +346,13 @@ java_import(
     ],
 )
 
+java_import(
+    name = "lsp4j",
+    jars = [
+        "lsp4j/org.eclipse.lsp4j-0.3.0.jar",
+    ],
+)
+
 # For bootstrapping JavaBuilder
 filegroup(
     name = "bootstrap_guava_and_error_prone-jars",
