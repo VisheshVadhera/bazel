@@ -1,4 +1,4 @@
-package src.java_tools.codecompletion.java.com.google.codecompletion;
+package src.java_tools.codecompletion.java.com.google.codecompletion.server;
 
 import java.util.Arrays;
 import java.util.List;
